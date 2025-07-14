@@ -1,0 +1,29 @@
+{
+  "originUrl": "https://www.mccy.gov.sg",
+  "urls": [
+    {
+      "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+      "source": "MANUAL",
+      "targetPath": "/sectors/arts-and-heritage",
+      "id": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730"
+    },
+    {
+      "url": "https://www.mccy.gov.sg/sectors/charities",
+      "source": "MANUAL",
+      "targetPath": "/sectors/charities",
+      "id": "302f7540dcde9dda825c5f3b826425f0ec59a2aa"
+    },
+    {
+      "url": "https://www.mccy.gov.sg/sectors/mbos",
+      "source": "MANUAL",
+      "targetPath": "/sectors/mbos",
+      "id": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a"
+    }
+  ],
+  "crawlOptions": {
+    "strategy": "manual",
+    "strategiesAttempted": [
+      "MANUAL"
+    ]
+  }
+}
