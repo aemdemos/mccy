@@ -2,16 +2,16 @@
   "originUrl": "https://www.mccy.gov.sg",
   "urls": [
     {
-      "url": "https://www.mccy.gov.sg/get-involved",
-      "source": "MANUAL",
-      "targetPath": "/get-involved",
-      "id": "306eb378c603ea3085f4d2956a38d05f05fce7c5"
-    },
-    {
       "url": "https://www.mccy.gov.sg/sectors",
       "source": "MANUAL",
       "targetPath": "/sectors",
       "id": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca"
+    },
+    {
+      "url": "https://www.mccy.gov.sg/sectors/youth",
+      "source": "MANUAL",
+      "targetPath": "/sectors/youth",
+      "id": "dfbb9f13a9532d97b90af915bd03696126abe0c5"
     }
   ],
   "crawlOptions": {
