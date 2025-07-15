@@ -1,35 +1,30 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row matches exactly: 'Cards (cards2)'
-  const rows = [['Cards (cards2)']];
+  // Header row with exact block name as required
+  const headerRow = ['Cards (cards2)'];
 
-  // Get all direct <a> card elements
-  const cards = element.querySelectorAll(':scope > a');
-  cards.forEach(card => {
-    // Image: get the first <img> inside card
-    let img = card.querySelector('img'); // null if not present
-
-    // Text content: group h3 & p from card's content area
-    const textContainer = card.querySelector('.flex-col.gap-3');
-    let textElements = [];
-    if (textContainer) {
-      // Remove any <svg> from <h3> for clean heading
-      const h3 = textContainer.querySelector('h3');
-      if (h3) {
-        const icon = h3.querySelector('svg');
-        if (icon) icon.remove();
-        textElements.push(h3);
-      }
-      const p = textContainer.querySelector('p');
-      if (p) textElements.push(p);
+  // Select all direct card <a> children
+  const cards = Array.from(element.querySelectorAll(':scope > a'));
+  const rows = cards.map(card => {
+    // First cell: only the <img> element
+    const img = card.querySelector('img');
+    // Second cell: text stack (h3 + p, if present)
+    const h3 = card.querySelector('h3');
+    const p = card.querySelector('p');
+    // Remove SVG arrow from h3 if present, so heading text is clean
+    if (h3) {
+      const svg = h3.querySelector('svg');
+      if (svg) svg.remove();
     }
-    // Always reference the actual DOM nodes, not clones
-    rows.push([
-      img,
-      textElements.length === 1 ? textElements[0] : textElements // array for both h3+p, h3-only, or p-only
-    ]);
+    // Only add elements that are present
+    const textCell = [];
+    if (h3) textCell.push(h3);
+    if (p) textCell.push(p);
+    // If both missing, cell will be empty
+    return [img, textCell.length ? textCell : ''];
   });
-
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Compose table
+  const cells = [headerRow, ...rows];
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }
