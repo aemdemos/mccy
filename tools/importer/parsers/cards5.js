@@ -1,93 +1,55 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Goal: Extract the "Our initiatives" cards as a Cards (cards5) block
+  // Locate the main content column which contains the relevant initiatives section
+  const mainColumn = element.querySelector('.flex.flex-col.gap-16');
+  if (!mainColumn) return;
 
-  // 1. Find the section with the 'Our initiatives' grid of cards
-  let section = null;
-  let grid = null;
+  // Find the 'Our initiatives' section (cards5 block)
+  const ourInitiativesSection = mainColumn.querySelector('section');
+  if (!ourInitiativesSection) return;
 
-  // Search for 'Our initiatives' heading
-  const h2s = element.querySelectorAll('h2');
-  for (const h2 of h2s) {
-    if (h2.textContent.trim() === 'Our initiatives') {
-      // The cards grid is likely a sibling or descendant
-      // Look for the next .grid after the h2
-      let node = h2.nextElementSibling;
-      while (node) {
-        if (node.classList && node.classList.contains('grid')) {
-          grid = node;
-          section = h2.parentElement;
-          break;
-        }
-        node = node.nextElementSibling;
+  // Find the cards grid inside the section
+  const cardsGrid = ourInitiativesSection.querySelector('div.grid');
+  if (!cardsGrid) return;
+
+  // Gather all card links (immediate children)
+  const cardLinks = Array.from(cardsGrid.querySelectorAll(':scope > a'));
+
+  // Header row as specified in instructions and example
+  const headerRow = ['Cards (cards5)'];
+
+  // Build each card row
+  const cardRows = cardLinks.map(card => {
+    // Image: inside a "div.w-full" in the card
+    const imgContainer = card.querySelector('div.w-full');
+    const img = imgContainer ? imgContainer.querySelector('img') : null;
+
+    // Title and description: inside card's text container
+    const textContainer = card.querySelector('div.flex.flex-col');
+    let cardTitle = null;
+    let cardDesc = null;
+    if (textContainer) {
+      // Build card title as: use heading element (h3), but remove arrow SVG if present
+      cardTitle = textContainer.querySelector('h3');
+      if (cardTitle && cardTitle.querySelector('svg')) {
+        cardTitle = cardTitle.cloneNode(true);
+        const svg = cardTitle.querySelector('svg');
+        if (svg) svg.remove();
       }
-      if (!grid) {
-        // fallback: descendant .grid
-        grid = h2.parentElement.querySelector('.grid');
-        if (grid) section = h2.parentElement;
-      }
-      break;
+      // Description: paragraph
+      cardDesc = textContainer.querySelector('p');
     }
-  }
-
-  // If not found, fallback to .grid with 3 or more anchors
-  if (!grid) {
-    const possible = element.querySelectorAll('.grid');
-    for (const div of possible) {
-      if (div.querySelectorAll('a').length >= 3) {
-        grid = div;
-        section = div.parentElement;
-        break;
-      }
-    }
-  }
-
-  if (!grid) return;
-  
-  // 2. Extract the cards
-  const rows = [['Cards (cards5)']];
-  const cards = Array.from(grid.querySelectorAll(':scope > a'));
-
-  cards.forEach(card => {
-    // First cell: the image (reference the actual <img> element)
-    let imgCell = null;
-    const imgDiv = card.querySelector('div');
-    if (imgDiv) {
-      const img = imgDiv.querySelector('img');
-      if (img) imgCell = img;
-    }
-
-    // Second cell: all text content (keep elements, do not clone)
-    // This usually means the div (after the image div) containing h3, p, etc.
-    let textDiv = null;
-    const divs = Array.from(card.querySelectorAll('div'));
-    if (divs.length > 1) {
-      textDiv = divs[1];
-    } else if (divs.length === 1 && !imgCell) {
-      // In case the image is missing, use the only div
-      textDiv = divs[0];
-    }
-    // Fallback: get all directly under the card after the image div
-    let textContent = [];
-    if (textDiv) {
-      // Reference its children only (to avoid possible container div)
-      textContent = Array.from(textDiv.children);
-    } else {
-      // fallback: collect all <h3> and <p> under the card (not in image div)
-      const h3 = card.querySelector('h3');
-      const p = card.querySelector('p');
-      if (h3) textContent.push(h3);
-      if (p) textContent.push(p);
-    }
-
-    // If no image, set cell to null for layout
-    rows.push([
-      imgCell || null,
-      textContent.length > 0 ? textContent : card.textContent.trim()
-    ]);
+    // Compose cell 2 as [title, description] (do not clone or create new elements)
+    const cell2 = [];
+    if (cardTitle) cell2.push(cardTitle);
+    if (cardDesc) cell2.push(cardDesc);
+    return [img, cell2];
   });
 
-  // 3. Create and replace
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  // Compose the table: header row then card rows
+  const tableRows = [headerRow, ...cardRows];
+  const block = WebImporter.DOMUtils.createTable(tableRows, document);
+
+  // Replace the section (ourInitiativesSection) with the block table
+  ourInitiativesSection.replaceWith(block);
 }

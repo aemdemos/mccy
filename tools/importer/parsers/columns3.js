@@ -1,23 +1,42 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Block name header, matching example: 'Columns (columns3)'
+  // Header row must be a single cell (not one per column!)
   const headerRow = ['Columns (columns3)'];
 
-  // Find all direct <a> children for the three columns
+  // Gather all top-level columns (should be <a> elements)
   const columns = Array.from(element.querySelectorAll(':scope > a'));
 
-  // If there are no <a> children, don't create the table (edge case handling)
-  if (!columns.length) return;
+  // For each column, extract and assemble its content for one cell
+  const contentRow = columns.map((col) => {
+    // Use a fragment to gather content
+    const frag = document.createDocumentFragment();
+    const inner = col.querySelector('div');
+    if (!inner) return '';
+    // Grab the relevant elements
+    const date = inner.querySelector('p.prose-label-sm-medium');
+    if (date) frag.appendChild(date);
+    const h3 = inner.querySelector('h3');
+    if (h3) {
+      const h3Clone = h3.cloneNode(true);
+      Array.from(h3Clone.querySelectorAll('svg')).forEach(svg => svg.remove());
+      const headlineLink = document.createElement('a');
+      headlineLink.href = col.href;
+      while (h3Clone.firstChild) {
+        headlineLink.appendChild(h3Clone.firstChild);
+      }
+      frag.appendChild(headlineLink);
+    }
+    const type = inner.querySelector('p.prose-label-sm-regular');
+    if (type) frag.appendChild(type);
+    return frag;
+  });
 
-  // Each <a> becomes a column in the second row. Reference existing elements.
-  const contentRow = columns;
-
-  // Create the table
-  const table = WebImporter.DOMUtils.createTable([
+  // The table must have a single-cell header row, second row with N cells (one per column)
+  const cells = [
     headerRow,
     contentRow
-  ], document);
+  ];
 
-  // Replace the original element with the new table
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

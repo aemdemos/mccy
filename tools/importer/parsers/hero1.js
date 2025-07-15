@@ -1,64 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row
+  // Header row as in the example
   const headerRow = ['Hero'];
 
-  // 2. Background image row
-  // Extract background-image URL from style
-  let bgUrl = '';
-  const style = element.getAttribute('style') || '';
-  const match = style.match(/background-image\s*:\s*url\((['"]?)(.*?)\1\)/i);
-  if (match) {
-    bgUrl = match[2];
-  }
+  // Extract background image URL from the section's style
   let bgImgEl = null;
-  if (bgUrl) {
+  const style = element.getAttribute('style') || '';
+  const bgMatch = style.match(/background-image:\s*url\(['"]?([^'"]+)['"]?\)/i);
+  if (bgMatch && bgMatch[1]) {
     bgImgEl = document.createElement('img');
-    bgImgEl.src = bgUrl;
+    bgImgEl.src = bgMatch[1];
     bgImgEl.alt = '';
   }
-  const bgImgRow = [bgImgEl];
 
-  // 3. Content row
-  // Find the innermost content div that contains h1 and p
-  let contentDiv = null;
-  // Try to find .component-content or its relevant descendants
-  const contentCandidate = element.querySelector('.component-content');
-  if (contentCandidate) {
-    // The div with both h1 and p is a child (usually two levels down)
-    const innerDivs = contentCandidate.querySelectorAll('div');
-    for (const d of innerDivs) {
-      if (
-        d.querySelector('h1, h2, h3, h4, h5, h6') ||
-        d.querySelector('p')
-      ) {
-        contentDiv = d;
-        break;
-      }
-    }
-  }
-  // Fallbacks if structure changes
-  if (!contentDiv) {
-    // Try to find any direct child with heading or p
-    const allDivs = element.querySelectorAll('div');
-    for (const d of allDivs) {
-      if (
-        d.querySelector('h1, h2, h3, h4, h5, h6') ||
-        d.querySelector('p')
-      ) {
-        contentDiv = d;
-        break;
-      }
-    }
-  }
-  // If nothing found, fallback to the whole element
-  if (!contentDiv) {
-    contentDiv = element;
-  }
-  const contentRow = [contentDiv];
+  // Compose the headline and subheadline cell
+  // Find the first h1 and p anywhere in the section
+  const h1 = element.querySelector('h1');
+  const p = element.querySelector('p');
+  // Compose cell content, preserving order and using references
+  const contentCell = [];
+  if (h1) contentCell.push(h1);
+  if (p) contentCell.push(p);
+  // If both are missing, ensure the cell is not empty
+  if (contentCell.length === 0) contentCell.push(document.createTextNode(''));
 
-  // 4. Compose table
-  const cells = [headerRow, bgImgRow, contentRow];
+  // Compose the table cells as per structure
+  const cells = [
+    headerRow,
+    [bgImgEl ? bgImgEl : ''],
+    [contentCell],
+  ];
+
+  // Replace the original element with the new table
   const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }
