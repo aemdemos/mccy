@@ -2,16 +2,16 @@
   "originUrl": "https://www.mccy.gov.sg",
   "urls": [
     {
-      "url": "https://www.mccy.gov.sg",
+      "url": "https://www.mccy.gov.sg/get-involved",
       "source": "MANUAL",
-      "targetPath": "/",
-      "id": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6"
+      "targetPath": "/get-involved",
+      "id": "306eb378c603ea3085f4d2956a38d05f05fce7c5"
     },
     {
-      "url": "https://www.mccy.gov.sg/cos/cos-2019",
+      "url": "https://www.mccy.gov.sg/sectors",
       "source": "MANUAL",
-      "targetPath": "/cos/cos-2019",
-      "id": "da0cc4ed8cd88c595c015ecd1c70ef3209913c30"
+      "targetPath": "/sectors",
+      "id": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca"
     }
   ],
   "crawlOptions": {
