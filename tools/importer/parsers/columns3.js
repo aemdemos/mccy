@@ -1,23 +1,22 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Block name header, matching example: 'Columns (columns3)'
+  // Header row: single cell with block name and variant
   const headerRow = ['Columns (columns3)'];
 
-  // Find all direct <a> children for the three columns
+  // Get all direct column elements (each <a>)
   const columns = Array.from(element.querySelectorAll(':scope > a'));
+  // Defensive: if no columns, do not replace
+  if (columns.length === 0) return;
 
-  // If there are no <a> children, don't create the table (edge case handling)
-  if (!columns.length) return;
-
-  // Each <a> becomes a column in the second row. Reference existing elements.
+  // Content row: array of <a> elements
   const contentRow = columns;
 
-  // Create the table
+  // Table structure: header row (1 col), content row (n cols)
   const table = WebImporter.DOMUtils.createTable([
     headerRow,
     contentRow
   ], document);
 
-  // Replace the original element with the new table
+  // Replace the original element with the table
   element.replaceWith(table);
 }

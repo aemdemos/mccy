@@ -1,30 +1,57 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row with exact block name as required
+  // Table header as specified by block name
   const headerRow = ['Cards (cards2)'];
+  const rows = [];
 
-  // Select all direct card <a> children
-  const cards = Array.from(element.querySelectorAll(':scope > a'));
-  const rows = cards.map(card => {
-    // First cell: only the <img> element
+  // Each card is a direct child <a> of the grid
+  const cards = element.querySelectorAll(':scope > a');
+  cards.forEach(card => {
+    // Find the card image: the first <img> inside the card
+    let image = null;
     const img = card.querySelector('img');
-    // Second cell: text stack (h3 + p, if present)
-    const h3 = card.querySelector('h3');
-    const p = card.querySelector('p');
-    // Remove SVG arrow from h3 if present, so heading text is clean
-    if (h3) {
-      const svg = h3.querySelector('svg');
-      if (svg) svg.remove();
+    if (img) image = img;
+
+    // Card text: the div containing h3 (title) and p (desc)
+    // Usually the second div in each card
+    let textDiv = null;
+    const divs = card.querySelectorAll(':scope > div');
+    if (divs.length > 1) {
+      textDiv = divs[1];
+    } else if (divs.length === 1) {
+      textDiv = divs[0];
     }
-    // Only add elements that are present
-    const textCell = [];
-    if (h3) textCell.push(h3);
-    if (p) textCell.push(p);
-    // If both missing, cell will be empty
-    return [img, textCell.length ? textCell : ''];
+
+    // Clean up: remove any SVGs (arrow icons) inside h3
+    if (textDiv) {
+      const h3 = textDiv.querySelector('h3');
+      if (h3) {
+        h3.querySelectorAll('svg').forEach(svg => svg.remove());
+      }
+    }
+
+    // Compose cell contents: h3 and p, only if they exist
+    const cellContent = [];
+    if (textDiv) {
+      const h3 = textDiv.querySelector('h3');
+      const p = textDiv.querySelector('p');
+      if (h3) cellContent.push(h3);
+      if (p) cellContent.push(p);
+    }
+
+    // Table row: [image, text cell]
+    rows.push([
+      image,
+      cellContent
+    ]);
   });
-  // Compose table
-  const cells = [headerRow, ...rows];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Build the table: header, then a row per card
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    ...rows
+  ], document);
+
+  // Replace the element with the new block table
   element.replaceWith(table);
 }
