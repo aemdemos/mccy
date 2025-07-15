@@ -1,64 +1,48 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row
+  // --- 1st row: Block header ---
   const headerRow = ['Hero'];
 
-  // 2. Background image row
-  // Extract background-image URL from style
-  let bgUrl = '';
+  // --- 2nd row: Background image (optional) ---
+  // Extract from style background-image property
+  let imageEl = '';
   const style = element.getAttribute('style') || '';
-  const match = style.match(/background-image\s*:\s*url\((['"]?)(.*?)\1\)/i);
-  if (match) {
-    bgUrl = match[2];
+  const imgMatch = style.match(/background-image:\s*url\(['"]?([^'"]+)['"]?\)/i);
+  if (imgMatch && imgMatch[1]) {
+    imageEl = document.createElement('img');
+    imageEl.src = imgMatch[1];
+    imageEl.alt = '';
   }
-  let bgImgEl = null;
-  if (bgUrl) {
-    bgImgEl = document.createElement('img');
-    bgImgEl.src = bgUrl;
-    bgImgEl.alt = '';
-  }
-  const bgImgRow = [bgImgEl];
 
-  // 3. Content row
-  // Find the innermost content div that contains h1 and p
-  let contentDiv = null;
-  // Try to find .component-content or its relevant descendants
-  const contentCandidate = element.querySelector('.component-content');
-  if (contentCandidate) {
-    // The div with both h1 and p is a child (usually two levels down)
-    const innerDivs = contentCandidate.querySelectorAll('div');
-    for (const d of innerDivs) {
-      if (
-        d.querySelector('h1, h2, h3, h4, h5, h6') ||
-        d.querySelector('p')
-      ) {
-        contentDiv = d;
-        break;
-      }
+  // --- 3rd row: Content (title, subheading, CTA) ---
+  // Try to reference the most precise element containing the heading & content
+  // Prioritize the .component-content column, then fallback to h1/p
+  let contentCellNodes = [];
+  const componentContent = element.querySelector('.component-content');
+  if (componentContent) {
+    // Find the main text column (usually the first child div with flex-col)
+    const textCol = componentContent.querySelector('div.flex-col');
+    if (textCol) {
+      // Add all its children (e.g. headings, paragraphs)
+      contentCellNodes = Array.from(textCol.children).filter(e => e.textContent.trim() !== '');
+    } else {
+      // fallback: use everything inside .component-content
+      contentCellNodes = [componentContent];
     }
+  } else {
+    // fallback: just h1 and p
+    const h1 = element.querySelector('h1');
+    const p = element.querySelector('p');
+    if (h1) contentCellNodes.push(h1);
+    if (p) contentCellNodes.push(p);
   }
-  // Fallbacks if structure changes
-  if (!contentDiv) {
-    // Try to find any direct child with heading or p
-    const allDivs = element.querySelectorAll('div');
-    for (const d of allDivs) {
-      if (
-        d.querySelector('h1, h2, h3, h4, h5, h6') ||
-        d.querySelector('p')
-      ) {
-        contentDiv = d;
-        break;
-      }
-    }
-  }
-  // If nothing found, fallback to the whole element
-  if (!contentDiv) {
-    contentDiv = element;
-  }
-  const contentRow = [contentDiv];
 
-  // 4. Compose table
-  const cells = [headerRow, bgImgRow, contentRow];
+  // Prepare the table for the Hero block
+  const cells = [
+    headerRow,
+    [imageEl || ''],
+    [contentCellNodes.length ? contentCellNodes : '']
+  ];
   const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }
