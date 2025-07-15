@@ -1,50 +1,66 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main content column: it's the .col-span-12 (not the sidebar)
-  const mainCol = element.querySelector('.col-span-12.flex.flex-col');
-  if (!mainCol) return;
+  // 1. Header row
+  const headerRow = ['Hero (hero1)'];
 
-  // Find the first image (background image for the Hero)
-  const img = mainCol.querySelector('img');
-
-  // Find the image container to know from where to start extracting hero content
-  let imageContainer = null;
-  if (img) {
-    imageContainer = img.closest('div');
-  }
-
-  // Gather hero textual content: everything after the image, up to the first H2 ("Policies")
-  // We'll collect all siblings after the image container until we hit h2 with text 'Policies'
-  const heroContent = [];
-  let collecting = false;
-  for (const child of mainCol.children) {
-    if (child === imageContainer) {
-      collecting = true;
-      continue;
+  // 2. Background image row
+  let bgImgUrl = '';
+  if (element.hasAttribute('style')) {
+    const styleVal = element.getAttribute('style');
+    const match = styleVal.match(/background-image:url\(['"]?([^'")]+)['"]?\)/i);
+    if (match) {
+      bgImgUrl = match[1];
     }
-    if (collecting) {
-      if (child.tagName === 'H2' && child.textContent.trim() === 'Policies') {
+  }
+  let bgImgEl = null;
+  if (bgImgUrl) {
+    bgImgEl = document.createElement('img');
+    bgImgEl.src = bgImgUrl;
+    bgImgEl.alt = '';
+  }
+  const bgImgRow = [bgImgEl ? bgImgEl : ''];
+
+  // 3. Gather content (title, subheading, cta)
+  // Structure: section > div > div > div > div (text content is in the last innermost div)
+  let contentCell = '';
+  // Find the inner-most div with text content (usually after several wrappers)
+  let contentDiv = null;
+  // Try to find a div that contains an h1 or a p
+  const allDivs = element.querySelectorAll('div');
+  for (let div of allDivs) {
+    // We want the first div containing an h1 or p (title/subheading)
+    if (div.querySelector('h1, .prose-display-xl, p, .prose-title-lg-regular')) {
+      // But it should not be a wrapper with only other divs, so check if it contains direct h1/p
+      const hasDirect = Array.from(div.children).some(child => ['H1', 'P'].includes(child.tagName));
+      if (hasDirect) {
+        contentDiv = div;
         break;
       }
-      heroContent.push(child);
+      // If not found, fallback to first div anyway
+      contentDiv = div;
+      break;
     }
   }
 
-  // If no content found, fallback: just use the first h2 and its next paragraph
-  if (heroContent.length === 0) {
-    const h2 = mainCol.querySelector('h2');
-    if (h2) heroContent.push(h2);
-    if (h2 && h2.nextElementSibling && h2.nextElementSibling.tagName === 'P') {
-      heroContent.push(h2.nextElementSibling);
-    }
+  // If found, append all direct child h1 and p elements (preserving order)
+  if (contentDiv) {
+    const nodes = [];
+    Array.from(contentDiv.children).forEach(child => {
+      if (
+        (child.tagName === 'H1') ||
+        (child.tagName === 'P')
+      ) {
+        nodes.push(child);
+      }
+    });
+    // If nothing found, fallback to contentDiv itself. Else, use the nodes.
+    contentCell = nodes.length ? nodes : contentDiv;
   }
 
-  // Table structure as per example: 1 column, 3 rows (header, image, text)
-  const cells = [
-    ['Hero (hero1)'],
-    [img ? img : ''],
-    [heroContent.length > 0 ? heroContent : '']
-  ];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(table);
+  const contentRow = [contentCell];
+
+  // Compose table in the required format
+  const cells = [headerRow, bgImgRow, contentRow];
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(block);
 }
