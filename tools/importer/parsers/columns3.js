@@ -1,32 +1,23 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Block header must match exactly as in the example
+  // Block name header, matching example: 'Columns (columns3)'
   const headerRow = ['Columns (columns3)'];
-  // Find all immediate column elements (should be <a> elements)
-  const columnEls = Array.from(element.children);
 
-  // Edge case: if no columns, safely handle
-  if (columnEls.length === 0) {
-    const table = WebImporter.DOMUtils.createTable([
-      headerRow,
-      ['']
-    ], document);
-    element.replaceWith(table);
-    return;
-  }
+  // Find all direct <a> children for the three columns
+  const columns = Array.from(element.querySelectorAll(':scope > a'));
 
-  // For each column, grab the inner block (div) or fall back to <a>
-  const columns = columnEls.map((col) => {
-    // Usually structure: <a> <div> ... </div> </a>
-    const content = col.querySelector(':scope > div');
-    // If for some reason not found, fall back to the whole column element
-    return content || col;
-  });
+  // If there are no <a> children, don't create the table (edge case handling)
+  if (!columns.length) return;
 
-  // Build the main block table with header and one row of columns
-  const cells = [headerRow, columns];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Each <a> becomes a column in the second row. Reference existing elements.
+  const contentRow = columns;
 
-  // Replace the original element with the block
+  // Create the table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow
+  ], document);
+
+  // Replace the original element with the new table
   element.replaceWith(table);
 }
