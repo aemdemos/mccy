@@ -1,13 +1,29 @@
+.columns {
+  background: #fff;
+  color: #232A38;
+  box-sizing: border-box;
+}
+
+.columns img {
+  width: 100%;
+  max-width: unset;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .columns > div {
   display: flex;
   flex-direction: column;
 }
 
-.columns img {
-  width: 100%;
-}
-
 .columns > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 0.003em;
+  flex: 1;
   order: 1;
 }
 
@@ -21,13 +37,159 @@
 
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
     flex-direction: unset;
     gap: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    width: 100%;
+    background: #fff;
+    color: #232A38;
+    box-sizing: border-box;
   }
-
   .columns > div > div {
-    flex: 1;
     order: unset;
   }
+}
+
+@media (width <= 900px) {
+  .columns > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    background: #fff;
+    color: #232A38;
+    box-sizing: border-box;
+  }
+}
+
+/* Headings: prominent and right on top of links */
+.columns h2,
+.columns h3 {
+  color: #232A38;
+  font-weight: 700;
+  margin: 0 0 0.05em;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+/* Paragraph grouping: ONLY flex multi-link, block for others */
+.columns > div > div > p {
+  margin: 0.01em 0;
+  padding: 0;
+  line-height: 1.32;
+  color: #717786;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.columns > div > div > p:has(a + a),
+.columns > div > div > p:has(a + br),
+.columns > div > div > p:has(br + a) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.5em;
+}
+
+.columns > div > div > p:has(picture),
+.columns > div > div > p:has(.button) {
+  display: block;
+  text-align: left;
+  margin: 0.06em 0;
+}
+
+@media (width <= 600px) {
+  .columns > div > div > p:has(a + a),
+  .columns > div > div > p:has(a + br),
+  .columns > div > div > p:has(br + a) {
+    gap: 0 0.25em;
+  }
+}
+
+/* Inline links and icons, tight gap */
+.columns a,
+.columns picture {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-right: 0.12em;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #232A38;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.32;
+}
+
+.columns a:hover,
+.columns a:focus {
+  color: #131313;
+  text-decoration: underline;
+}
+
+/* Remove trailing margin on last link in p */
+.columns > div > div > p > a:last-child {
+  margin-right: 0;
+}
+
+/* Small icon sizing and ultra-tight spacing */
+.columns img[width="12"],
+.columns img[height="12"] {
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  min-height: 12px;
+  max-width: 12px;
+  max-height: 12px;
+  vertical-align: middle;
+  margin-left: 0.05em;
+  margin-right: 0.01em;
+  display: inline-block;
+}
+
+/* Allow logo images to be visible and sized */
+.columns > div > div > p > picture img[width="114"],
+.columns > div > div > p > picture img[width="126"] {
+  margin: 0.09em 0;
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Tight vertical stacking for all sections */
+.columns > div > div > *:not(:last-child) {
+  margin-bottom: 0.01em;
+}
+
+/* Compact button & logo grouping */
+.columns .button-container {
+  margin: 0.08em 0;
+}
+
+.columns .button {
+  background: #232A38;
+  color: #fff;
+  border-radius: 2em;
+  padding: 0.5em 1.3em;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.08em 0;
+  box-shadow: none;
+  border: none;
+}
+
+.columns .button:hover,
+.columns .button:focus {
+  background: #131313;
+}
+
+/* Tighter stacking for logo/button area */
+.columns > div > div > p + .button-container,
+.columns > div > div > .button-container + p {
+  margin-top: 0.03em;
 }
