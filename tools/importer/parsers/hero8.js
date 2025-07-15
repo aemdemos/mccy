@@ -1,53 +1,48 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main section which contains the content and image
-  const mainSection = element.querySelector('.col-span-12');
-  if (!mainSection) return;
-  
-  // 1. Find the hero image (first <img> in mainSection)
-  const img = mainSection.querySelector('img');
+  // Find the main content column (contains the hero image and main content)
+  let mainColumn = element.querySelector('.flex.flex-col.gap-16');
+  if (!mainColumn) {
+    mainColumn = element;
+  }
 
-  // 2. Find the first <h2> after the image (title for the hero)
-  //    and collect all elements up to the next <h2> or end of mainSection
-  let contentEls = [];
-  let headingFound = false;
-  if (img) {
-    let node = img.parentElement.nextElementSibling;
-    while (node) {
-      if (node.tagName && node.tagName.match(/^H2$/i)) {
-        if (!headingFound) {
-          headingFound = true;
-        } else {
-          break; // Stop at the next H2 after the first
+  // Find the hero image (first <img> under mainColumn)
+  let heroImg = mainColumn.querySelector('img');
+
+  // Find the first hero heading (h2) after the image
+  let heroHeading = null;
+  let heroContent = [];
+  if (heroImg) {
+    // Start from the image's parent
+    let imgContainer = heroImg.parentElement;
+    let sibling = imgContainer.nextElementSibling;
+    // Find the first H2 after the image
+    while (sibling && (!sibling.tagName || !sibling.tagName.match(/^H2$/i))) {
+      sibling = sibling.nextElementSibling;
+    }
+    if (sibling && sibling.tagName.match(/^H2$/i)) {
+      heroHeading = sibling;
+      heroContent.push(heroHeading);
+      // Now gather only the blocks that belong to the hero intro: paragraphs and info boxes,
+      // but stop if we hit another H2 (the next main section) or SECTION (major block)
+      sibling = heroHeading.nextElementSibling;
+      while (sibling && (!sibling.tagName.match(/^H2$/i)) && sibling.tagName !== 'SECTION') {
+        // Example allows paragraphs and info-box divs in hero, but not new main sections
+        if (
+          sibling.tagName === 'P' ||
+          (sibling.tagName === 'DIV' && sibling.className.includes('prose-headline-lg-regular'))
+        ) {
+          heroContent.push(sibling);
         }
+        sibling = sibling.nextElementSibling;
       }
-      if (headingFound) {
-        contentEls.push(node);
-      }
-      node = node.nextElementSibling;
-    }
-  }
-  // If we found nothing (odd edge-case), fallback: just grab all after img
-  if (contentEls.length === 0 && img) {
-    let node = img.parentElement.nextElementSibling;
-    while (node) {
-      contentEls.push(node);
-      node = node.nextElementSibling;
     }
   }
 
-  // Remove any undefined/null
-  contentEls = contentEls.filter(Boolean);
-
-  // Prepare table rows
   const headerRow = ['Hero (hero8)'];
-  const imageRow = [img ? img : ''];
-  const contentRow = [contentEls.length > 0 ? contentEls : ''];
-
-  // Build table
-  const cells = [headerRow, imageRow, contentRow];
+  const imgRow = [heroImg ? heroImg : ''];
+  const contentRow = [heroContent.length ? heroContent : ['']];
+  const cells = [headerRow, imgRow, contentRow];
   const table = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace the main hero section with the table
-  mainSection.replaceWith(table);
+  element.replaceWith(table);
 }
