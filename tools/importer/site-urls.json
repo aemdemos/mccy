@@ -2,6 +2,12 @@
   "originUrl": "https://www.mccy.gov.sg",
   "urls": [
     {
+      "url": "https://www.mccy.gov.sg/",
+      "source": "MANUAL",
+      "targetPath": "",
+      "id": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a"
+    },
+    {
       "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
       "source": "MANUAL",
       "targetPath": "/sectors/arts-and-heritage",
