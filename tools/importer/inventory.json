@@ -1,0 +1,199 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/charities",
+          "urlHash": "302f7540dcde9dda825c5f3b826425f0ec59a2aa",
+          "uuid": "302f7540-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+          "urlHash": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730",
+          "uuid": "5706d185-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/mbos",
+          "urlHash": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a",
+          "uuid": "6b355d1b-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        }
+      ],
+      "styles": {
+        "height": 195
+      }
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/charities",
+          "urlHash": "302f7540dcde9dda825c5f3b826425f0ec59a2aa",
+          "uuid": "302f7540-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+          "urlHash": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730",
+          "uuid": "5706d185-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/mbos",
+          "urlHash": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a",
+          "uuid": "6b355d1b-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        }
+      ],
+      "styles": {
+        "background": "rgb(24, 24, 27) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Hero",
+      "cluster": 1,
+      "source": "Hero",
+      "target": "Hero (hero1)",
+      "key": "hero1",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+          "urlHash": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730",
+          "uuid": "5706d185-02-3ab9b21ef6cb3a018359b9f0daf1c63ecf73c7c1",
+          "xpath": "/html[1]/body[1]/main[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "cluster": 2,
+      "source": "Header",
+      "target": "Header",
+      "key": "header2",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/charities",
+          "urlHash": "302f7540dcde9dda825c5f3b826425f0ec59a2aa",
+          "uuid": "302f7540-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+          "urlHash": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730",
+          "uuid": "5706d185-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/mbos",
+          "urlHash": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a",
+          "uuid": "6b355d1b-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 3,
+      "source": "Cards",
+      "target": "Cards",
+      "key": "cards3",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/charities",
+          "urlHash": "302f7540dcde9dda825c5f3b826425f0ec59a2aa",
+          "uuid": "302f7540-02-3ab9b21ef6cb3a018359b9f0daf1c63ecf73c7c1",
+          "xpath": "/html[1]/body[1]/main[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 4,
+      "source": "Columns",
+      "target": "Columns",
+      "key": "columns4",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/charities",
+          "urlHash": "302f7540dcde9dda825c5f3b826425f0ec59a2aa",
+          "uuid": "302f7540-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-2"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+          "urlHash": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730",
+          "uuid": "5706d185-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-2"
+        },
+        {
+          "url": "https://www.mccy.gov.sg/sectors/mbos",
+          "urlHash": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a",
+          "uuid": "6b355d1b-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-2"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 5,
+      "source": "Hero",
+      "target": "Hero (hero5)",
+      "key": "hero5",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors/mbos",
+          "urlHash": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a",
+          "uuid": "6b355d1b-02-3ab9b21ef6cb3a018359b9f0daf1c63ecf73c7c1",
+          "xpath": "/html[1]/body[1]/main[1]/div[2]"
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "url": "https://www.mccy.gov.sg/sectors/charities",
+      "urlHash": "302f7540dcde9dda825c5f3b826425f0ec59a2aa",
+      "uuid": "302f7540-01-0e656e90ffa9b526f8ce51ba23e08542406d6fcc",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.mccy.gov.sg/sectors/arts-and-heritage",
+      "urlHash": "5706d18506cc43bc92418b7f6b7abfa7c7c0c730",
+      "uuid": "5706d185-01-0e656e90ffa9b526f8ce51ba23e08542406d6fcc",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.mccy.gov.sg/sectors/mbos",
+      "urlHash": "6b355d1b758d643f1d09b2d1393e2e821ab33c1a",
+      "uuid": "6b355d1b-01-0e656e90ffa9b526f8ce51ba23e08542406d6fcc",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]",
+      "section": "section-1"
+    }
+  ],
+  "sections": [
+    {
+      "name": "section-1",
+      "background": "rgb(251, 230, 230) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 3
+    },
+    {
+      "name": "section-2",
+      "background": "rgb(24, 24, 27) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 3
+    }
+  ]
+}
