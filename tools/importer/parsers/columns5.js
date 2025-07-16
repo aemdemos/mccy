@@ -1,79 +1,49 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main layout: desktop (.lg:block) or fallback
-  let mainLayout = element.querySelector('.lg\\:block');
-  if (!mainLayout) mainLayout = element.querySelector(':scope > div');
-  if (!mainLayout) mainLayout = element;
+  // Find the main container
+  const container = element.querySelector('.container');
+  if (!container) return;
 
-  // Find the columns grid
-  let columnsGrid = mainLayout.querySelector('.lg\\:grid');
-  if (!columnsGrid) columnsGrid = mainLayout.querySelector('.prose-body-sm.flex');
-  if (!columnsGrid) columnsGrid = mainLayout.querySelector(':scope > div');
+  // Find the multidropdown-section
+  const mdSection = container.querySelector('.multidropdown-section');
+  if (!mdSection) return;
 
-  // Find left/right column content
-  let columnDivs = [];
-  if (columnsGrid) {
-    columnDivs = Array.from(columnsGrid.children)
-      .filter(div => div.childElementCount > 0 || div.textContent.trim().length > 0)
-      .slice(0, 2);
-  }
+  // Get all dropdown option blocks (they are columns)
+  const optionDivs = Array.from(mdSection.querySelectorAll(':scope > .multidropdown-dd-option'));
 
-  // Left column: h2 and first column's content
-  const leftColWrapper = document.createElement('div');
-  const h2 = mainLayout.querySelector('h2');
-  if (h2) leftColWrapper.appendChild(h2);
-  if (columnDivs[0]) {
-    Array.from(columnDivs[0].childNodes).forEach(child => leftColWrapper.appendChild(child));
-  }
-
-  // Right column: second column's content
-  const rightColWrapper = document.createElement('div');
-  if (columnDivs[1]) {
-    Array.from(columnDivs[1].childNodes).forEach(child => rightColWrapper.appendChild(child));
-  }
-
-  // --- CRITICAL FIX: include all non-empty siblings after the mainLayout ---
-  // Find the last main content node (columnsGrid or last columnDiv)
-  let lastContentNode = columnsGrid;
-  if (!lastContentNode && columnDivs.length) lastContentNode = columnDivs[columnDivs.length - 1];
-  if (!lastContentNode) lastContentNode = mainLayout.lastElementChild;
-  // For desktop, copyright/builder are outside the grid, as siblings of mainLayout; for mobile, as children after the column stack
-  // We want to get all non-empty elements that appear after either columnsGrid or mainLayout in the parent
-  let afterNodes = [];
-  // Try after mainLayout in its parent (footer is element)
-  let mainSib = mainLayout.nextElementSibling;
-  while (mainSib) {
-    if (mainSib.childElementCount > 0 || mainSib.textContent.trim().length > 0) {
-      afterNodes.push(mainSib);
-    }
-    mainSib = mainSib.nextElementSibling;
-  }
-  // Also, after columnsGrid in mainLayout
-  if (columnsGrid) {
-    let sib = columnsGrid.nextElementSibling;
-    while (sib) {
-      if (sib.childElementCount > 0 || sib.textContent.trim().length > 0) {
-        afterNodes.push(sib);
+  // Build each column's cell
+  const cells = optionDivs.map((div) => {
+    // Include the label and dropdown value
+    const label = div.querySelector('label');
+    const dropdown = div.querySelector('span.k-dropdownlist');
+    let value = '';
+    if (dropdown) {
+      const valueText = dropdown.querySelector('.k-input-value-text');
+      if (valueText) {
+        const span = document.createElement('span');
+        span.textContent = valueText.textContent;
+        value = span;
       }
-      sib = sib.nextElementSibling;
     }
-  }
-  // For some layouts, copyright/builder may be nested in another wrapper after the grid
-  // To ensure we don't double-insert, only append each node once
-  const seen = new Set();
-  afterNodes.forEach(n => {
-    if (!seen.has(n)) {
-      rightColWrapper.appendChild(n);
-      seen.add(n);
-    }
+    return [label, value].filter(Boolean);
   });
 
-  // Compose the block table
-  const rows = [
-    ['Columns (columns5)'],
-    [leftColWrapper, rightColWrapper]
-  ];
+  // Add the Go button as a column
+  const goBtn = container.querySelector('input#MultiDDQuickLinkBtn');
+  if (goBtn) cells.push([goBtn]);
 
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Build the data array for the table
+  const data = [ ['Columns (columns5)'], cells ];
+
+  // Create the table using WebImporter.DOMUtils.createTable
+  const table = WebImporter.DOMUtils.createTable(data, document);
+
+  // Fix: Set colspan on the header cell (th) to span all columns
+  const th = table.querySelector('th');
+  if (th && cells.length > 1) {
+    th.setAttribute('colspan', cells.length);
+  }
+
+  // Replace the original element
   element.replaceWith(table);
 }
