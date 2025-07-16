@@ -1,17 +1,17 @@
 {
-  "originUrl": "https://www.mccy.gov.sg",
+  "originUrl": "https://www.nparks.gov.sg",
   "urls": [
     {
-      "url": "https://www.mccy.gov.sg/sectors",
+      "url": "https://www.nparks.gov.sg",
       "source": "MANUAL",
-      "targetPath": "/sectors",
-      "id": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca"
+      "targetPath": "/",
+      "id": "95372ee507b3b0e25a83e89dc36694bc01c61d6c"
     },
     {
-      "url": "https://www.mccy.gov.sg/sectors/youth",
+      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
       "source": "MANUAL",
-      "targetPath": "/sectors/youth",
-      "id": "dfbb9f13a9532d97b90af915bd03696126abe0c5"
+      "targetPath": "/visit/activities/arts-or-heritage-appreciation",
+      "id": "be20508fee377e929d1b86cdd36df241d7fd296f"
     }
   ],
   "crawlOptions": {
