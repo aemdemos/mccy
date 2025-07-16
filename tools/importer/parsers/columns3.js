@@ -1,23 +1,26 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Block name header, matching example: 'Columns (columns3)'
+  // The header row must be a single cell (one column), with the block name exactly
   const headerRow = ['Columns (columns3)'];
 
-  // Find all direct <a> children for the three columns
-  const columns = Array.from(element.querySelectorAll(':scope > a'));
+  // Gather all direct children (columns)
+  const columns = Array.from(element.children);
 
-  // If there are no <a> children, don't create the table (edge case handling)
-  if (!columns.length) return;
+  // Remove SVGs from h3s in each column (decoration only)
+  columns.forEach((col) => {
+    const h3 = col.querySelector('h3');
+    if (h3) {
+      const svg = h3.querySelector('svg');
+      if (svg) svg.remove();
+    }
+  });
 
-  // Each <a> becomes a column in the second row. Reference existing elements.
-  const contentRow = columns;
+  // Table structure: header (single cell), then a row with 3 columns
+  const tableData = [
+    headerRow,              // header row: exactly one cell
+    columns                 // content row: one cell per column
+  ];
 
-  // Create the table
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    contentRow
-  ], document);
-
-  // Replace the original element with the new table
+  const table = WebImporter.DOMUtils.createTable(tableData, document);
   element.replaceWith(table);
 }

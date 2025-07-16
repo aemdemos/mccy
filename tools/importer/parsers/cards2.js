@@ -1,30 +1,42 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row with exact block name as required
+  // Table header as in the example
   const headerRow = ['Cards (cards2)'];
+  // Gather all direct child card anchors
+  const cardEls = Array.from(element.querySelectorAll(':scope > a'));
+  const rows = [headerRow];
 
-  // Select all direct card <a> children
-  const cards = Array.from(element.querySelectorAll(':scope > a'));
-  const rows = cards.map(card => {
-    // First cell: only the <img> element
-    const img = card.querySelector('img');
-    // Second cell: text stack (h3 + p, if present)
-    const h3 = card.querySelector('h3');
-    const p = card.querySelector('p');
-    // Remove SVG arrow from h3 if present, so heading text is clean
-    if (h3) {
-      const svg = h3.querySelector('svg');
-      if (svg) svg.remove();
+  cardEls.forEach(card => {
+    // Image: always in the first child div > img
+    let img = null;
+    const imgDiv = card.querySelector(':scope > div');
+    if (imgDiv) {
+      img = imgDiv.querySelector('img');
     }
-    // Only add elements that are present
-    const textCell = [];
-    if (h3) textCell.push(h3);
-    if (p) textCell.push(p);
-    // If both missing, cell will be empty
-    return [img, textCell.length ? textCell : ''];
+
+    // Text content: h3 (with svg removed), plus first p below it
+    const textDiv = card.querySelector(':scope > div.flex.flex-col.gap-3');
+    const cellContent = [];
+    if (textDiv) {
+      // Heading
+      const heading = textDiv.querySelector('h3');
+      if (heading) {
+        // Remove SVG arrow if present
+        const svg = heading.querySelector('svg');
+        if (svg) svg.remove();
+        cellContent.push(heading);
+      }
+      // Description
+      const desc = textDiv.querySelector('p');
+      if (desc) cellContent.push(desc);
+    }
+
+    rows.push([
+      img,
+      cellContent
+    ]);
   });
-  // Compose table
-  const cells = [headerRow, ...rows];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }
