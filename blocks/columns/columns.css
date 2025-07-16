@@ -1,3 +1,4 @@
+/* Columns: Base layout */
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -19,90 +20,95 @@
   display: block;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
-}
-
+/* Columns 3: Container styling */
 .columns.columns3 {
   background: #fff;
   padding: 0;
+  margin: 0;
 }
-  
-/* 1. Layout: 3 columns, equal width, horizontal alignment */
+
+/* Layout: 3 columns, equal width, horizontal alignment */
 .columns.columns3 > div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  gap: 5vw;
+  gap: 6vw;
   margin: 0;
   padding: 0;
 }
 
-/* 2. Each card: stack content top/left, no extra padding or shadow */
+/* Each card: vertical stack, left aligned, a bit wider for balanced wrapping */
 .columns.columns3 > div > div {
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
+  max-width: 240px;
   margin: 0;
   padding: 0;
   background: none;
   box-shadow: none;
 }
 
-/* 3. Remove default button styling, enable multi-line, increase vertical spacing for natural wraps */
-.columns.columns3 .button-container .button {
-  background: none;
-  border: none;
-  border-radius: 0;
-  color: #232A31;
-  font-size: 16px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.45;
-  text-align: left;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-  width: 100%;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: unset;
-  letter-spacing: 0.01em;
-
-  /* Replaced 'word-break: break-word;' with 'overflow-wrap: break-word;' for validation */
-  overflow-wrap: break-word;
-  margin-bottom: 0.5em;
-}
-
-/* 4. Remove default margin/padding from button-container for alignment */
+/* Remove inherited margin/padding from button container */
 .columns.columns3 .button-container {
   margin: 0;
   padding: 0;
 }
 
-/* 5. Responsive: stack columns vertically on small screens */
+/* Minimalist, readable block link style, lighter weight for less heaviness */
+.columns.columns3 .button-container .button {
+  display: block;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #232734;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.18;
+  text-align: left;
+  padding: 0;
+  margin: 0 0 0.5em;
+  width: 100%;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+  overflow-wrap: break-word;
+}
+
+/* Responsive: stack columns vertically on small screens */
 @media (width <= 900px) {
   .columns.columns3 > div {
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
+  }
+
+  .columns.columns3 > div > div {
+    max-width: 100%;
   }
 }
 
-/* 6. Optional: Slightly tighten up card width for better text wrap control on wide screens */
+/* Responsive: tighten card width for wide screens */
 @media (width >= 1200px) {
   .columns.columns3 > div > div {
     max-width: 340px;
+  }
+}
+
+@media (width >= 900px) {
+  .columns > div {
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .columns > div > div {
+    flex: 1;
+    order: unset;
   }
 }
