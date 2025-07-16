@@ -237,8 +237,7 @@ export default {
     const url = new URL(originalURL);
     // Only remove trailing slash if it wasn't present in the original URL
     source.params.originalURL = originalURL.endsWith('/') ? url.href : url.href.replace(/\/$/, '');
-
-
+    
     /* eslint-disable-next-line prefer-const */
     let publishUrl = window.location.origin;
     // $$publishUrl = '{{{publishUrl}}}';

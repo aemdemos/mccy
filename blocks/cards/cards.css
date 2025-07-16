@@ -1,3 +1,4 @@
+ 
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -24,4 +25,229 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.cards.cards2 {
+  margin: 0 auto 40px;
+  padding-top: 0;
+  max-width: 1180px;
+  width: 100%;
+  display: block;
+  background: #fff;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cards.cards2 > ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  place-items: stretch stretch;
+}
+
+.cards.cards2 > ul > li {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  width: 100%;
+  align-items: stretch;
+  height: 100%;
+}
+
+.cards.cards2 .cards-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+.cards.cards2 .cards-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+.cards.cards2 .cards-card-body {
+  padding: 18px 16px 12px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.cards.cards2 .cards-card-body h3 {
+  font-size: 1.13rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 2px;
+  letter-spacing: 0.01em;
+  line-height: 1.22;
+  text-align: left;
+  width: 100%;
+}
+
+.cards.cards2 .cards-card-body p {
+  font-size: 0.94rem;
+  color: #555;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  width: 100%;
+}
+
+/* Remove accidental spacing above the block if a parent adds it */
+.cards-wrapper {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.cards.cards5 {
+  width: 712px;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 8px;
+  box-sizing: border-box;
+}
+
+.cards.cards5 > ul {
+  display: grid;
+  grid-template-columns: 336px 336px;
+  gap: 32px;
+  justify-content: start;
+  width: 100%;
+  max-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards.cards5 > ul > li {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgb(60 60 60 / 4%);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.cards.cards5 .cards-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0;
+  background: #f3f3f3;
+  display: block;
+}
+
+.cards.cards5 .cards-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+.cards.cards5 .cards-card-body {
+  padding: 16px 16px 12px;
+  margin: 0;
+  display: block;
+  width: 100%;
+}
+
+.cards.cards5 .cards-card-body .button-container {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.cards.cards5 .cards-card-body .button {
+  color: #222;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: left;
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+@media (width <= 1200px) {
+  .cards.cards2 {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .cards.cards2 > ul {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 24px 16px;
+  }
+}
+
+@media (width <= 1023px) {
+  .cards.cards2 > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+}
+
+@media (width <= 800px) {
+  .cards.cards2 > ul {
+    grid-template-columns: 1fr;
+    gap: 20px 0;
+  }
+}
+
+@media (width <= 767px) {
+  .cards.cards2 > ul {
+    grid-template-columns: 1fr;
+    gap: 18px 0;
+  }
+}
+
+@media (width <= 700px) {
+  .cards.cards5 {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .cards.cards5 > ul {
+    grid-template-columns: 1fr;
+    gap: 20px 0;
+  }
 }
