@@ -6,21 +6,20 @@
       "totalBoxes": 1,
       "instances": [
         {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-00-ec260e70fd0d109a7b00561467202bbb97cfb965",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[1]"
+          "url": "https://www.mccy.gov.sg/sectors",
+          "urlHash": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca",
+          "uuid": "55c6f168-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
         },
         {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-00-ec260e70fd0d109a7b00561467202bbb97cfb965",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[1]"
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
         }
       ],
       "styles": {
-        "height": 29,
-        "background": "rgb(240, 240, 240) none repeat scroll 0% 0% / auto padding-box border-box"
+        "height": 195
       }
     },
     {
@@ -29,413 +28,172 @@
       "totalBoxes": 1,
       "instances": [
         {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-21-5539fed3012de37d835c73b2f78d36c0cf0b0a38",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[3]/div[3]"
+          "url": "https://www.mccy.gov.sg/sectors",
+          "urlHash": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca",
+          "uuid": "55c6f168-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
         },
         {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-13-0ec6ee9c87bf8f450d6a642dc0ffec1f9c0a3627",
-          "xpath": "/html[1]/body[1]/div[1]/div[7]/div[3]"
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-07-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
         }
       ],
       "styles": {
-        "background": "rgb(39, 39, 39) none repeat scroll 0% 0% / auto padding-box border-box"
+        "background": "rgb(24, 24, 27) none repeat scroll 0% 0% / auto padding-box border-box"
       }
     }
   ],
   "blocks": [
     {
-      "name": "header",
+      "name": "Hero",
       "cluster": 1,
-      "source": "Header",
-      "target": "Header",
-      "key": "header1",
+      "source": "Hero",
+      "target": "Hero",
+      "key": "hero1",
       "instances": [
         {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-00-ec260e70fd0d109a7b00561467202bbb97cfb965",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[1]",
-          "section": "section-1"
-        },
-        {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-00-ec260e70fd0d109a7b00561467202bbb97cfb965",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[1]",
-          "section": "section-1"
-        }
-      ]
-    },
-    {
-      "name": "unknown",
-      "cluster": 2,
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-02-d72caa907dc624342957e5b0bf1f3f76c63d7ee7",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[3]",
-          "section": "section-2"
-        },
-        {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-02-d72caa907dc624342957e5b0bf1f3f76c63d7ee7",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[3]",
-          "section": "section-2"
-        }
-      ]
-    },
-    {
-      "name": "Carousel",
-      "cluster": 3,
-      "source": "Carousel",
-      "target": "Carousel",
-      "key": "carousel3",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-04-005e2a8c7caf56093390d80fa0debef500624802",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 4,
-      "source": "Cards",
-      "target": "Cards (cards4)",
-      "key": "cards4",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-06-15eeee4e2c1508838e1c5ecddec842f7a15c0a1c",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[2]",
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-01-e1adc6900d30d14f9e9d1d4bb64bb29fe5399480",
+          "xpath": "/html[1]/body[1]/main[1]/div[1]/section[1]",
           "section": "section-3"
         }
       ]
     },
     {
+      "name": "Cards",
+      "cluster": 2,
+      "source": "Cards",
+      "target": "Cards (cards2)",
+      "key": "cards2",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-03-4677d860e176a7106585ab9a904221740ef4aa1e",
+          "xpath": "/html[1]/body[1]/main[1]/div[1]/section[2]/div[2]"
+        }
+      ]
+    },
+    {
       "name": "Columns",
+      "cluster": 3,
+      "source": "Columns",
+      "target": "Columns (columns3)",
+      "key": "columns3",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-05-b46899806d1396216a60537bf313e519d0e220c3",
+          "xpath": "/html[1]/body[1]/main[1]/div[1]/section[3]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "cluster": 4,
+      "source": "Header",
+      "target": "Header",
+      "key": "header4",
+      "instances": [
+        {
+          "url": "https://www.mccy.gov.sg/sectors",
+          "urlHash": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca",
+          "uuid": "55c6f168-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        },
+        {
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-00-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
       "cluster": 5,
-      "source": "Columns",
-      "target": "Columns (columns5)",
-      "key": "columns5",
+      "source": "Cards",
+      "target": "Cards (cards5)",
+      "key": "cards5",
       "instances": [
         {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-07-1e07017fa140762fd524957414ee615c5f0309d6",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[5]",
-          "section": "section-2"
+          "url": "https://www.mccy.gov.sg/sectors",
+          "urlHash": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca",
+          "uuid": "55c6f168-02-3ab9b21ef6cb3a018359b9f0daf1c63ecf73c7c1",
+          "xpath": "/html[1]/body[1]/main[1]/div[2]"
         }
       ]
     },
     {
-      "name": "Tabs",
+      "name": "Columns",
       "cluster": 6,
-      "source": "Tabs",
-      "target": "Tabs",
-      "key": "tabs6",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-09-386b7724aff485b846a57eebb1e6ccf602ef591a",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[6]/div[2]/div[1]"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 7,
-      "source": "Cards",
-      "target": "Cards (cards7)",
-      "key": "cards7",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-10-e3213cfd985d7d5f082390e27410cd1d82a15934",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[6]/div[2]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 8,
       "source": "Columns",
-      "target": "Columns (columns8)",
-      "key": "columns8",
+      "target": "Columns (columns6)",
+      "key": "columns6",
       "instances": [
         {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-18-b13fb30c9d71c7c8f00e783f514204ce59c64cae",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[9]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Columns",
-      "cluster": 9,
-      "source": "Columns",
-      "target": "Columns (columns9)",
-      "key": "columns9",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-19-2c62425357089580940ed6f68c7bb25aa79f8a36",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[3]/div[1]",
+          "url": "https://www.mccy.gov.sg/sectors",
+          "urlHash": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca",
+          "uuid": "55c6f168-03-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
           "section": "section-2"
         },
         {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-11-51cbf764f4c171afe47dedf16f7978e4300d10ec",
-          "xpath": "/html[1]/body[1]/div[1]/div[7]/div[1]",
+          "url": "https://www.mccy.gov.sg",
+          "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+          "uuid": "c5a81fa5-07-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
           "section": "section-2"
-        }
-      ]
-    },
-    {
-      "name": "Embed (video)",
-      "cluster": 10,
-      "source": "Embed",
-      "target": "Embed (embedVideo10)",
-      "key": "embedVideo10",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-21-5539fed3012de37d835c73b2f78d36c0cf0b0a38",
-          "xpath": "/html[1]/body[1]/div[1]/div[2]/div[3]/div[3]",
-          "section": "section-7"
-        },
-        {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-13-0ec6ee9c87bf8f450d6a642dc0ffec1f9c0a3627",
-          "xpath": "/html[1]/body[1]/div[1]/div[7]/div[3]",
-          "section": "section-7"
-        }
-      ]
-    },
-    {
-      "name": "Cards",
-      "cluster": 11,
-      "source": "Cards",
-      "target": "Cards (cards11)",
-      "key": "cards11",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-08-dd6192a78c8123993cf71664f36d673ec0582f41",
-          "xpath": "/html[1]/body[1]/div[1]/div[5]/div[1]/div[4]/div[1]"
-        }
-      ]
-    },
-    {
-      "name": "Embed (video)",
-      "cluster": 12,
-      "source": "Embed",
-      "target": "Embed (embedVideo12)",
-      "key": "embedVideo12",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg",
-          "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-          "uuid": "95372ee5-01-07c557d6636fc1961324aaf292245586a3c75f16",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[2]"
-        },
-        {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-01-07c557d6636fc1961324aaf292245586a3c75f16",
-          "xpath": "/html[1]/body[1]/div[1]/div[1]/div[2]"
-        }
-      ]
-    },
-    {
-      "name": "Hero",
-      "cluster": 13,
-      "source": "Hero",
-      "target": "Hero",
-      "key": "hero13",
-      "instances": [
-        {
-          "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-          "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-          "uuid": "be20508f-04-51c9eecaa4f487a675ad9fb7361498d9052d1fac",
-          "xpath": "/html[1]/body[1]/div[1]/div[3]"
         }
       ]
     }
   ],
   "outliers": [
     {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-03-13db3d1e87a193ff5444cbe24779175f92a6a52e",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]",
-      "section": "section-3"
+      "url": "https://www.mccy.gov.sg/sectors",
+      "urlHash": "55c6f16839ac53ea76cf2ffbb81fdcb64c6447ca",
+      "uuid": "55c6f168-01-0e656e90ffa9b526f8ce51ba23e08542406d6fcc",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]",
+      "section": "section-1"
     },
     {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-05-8b1943593b315cb7df360c0942f183e5dcd403a6",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[1]",
-      "section": "section-3"
+      "url": "https://www.mccy.gov.sg",
+      "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+      "uuid": "c5a81fa5-02-175e06d137f473ad1fbf0f2e2bf9180f7dbf6ea7",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]/section[2]/div[1]"
     },
     {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-08-153ce672e365d116c19fbabc7ad2f9b817740e17",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[6]/div[1]"
+      "url": "https://www.mccy.gov.sg",
+      "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+      "uuid": "c5a81fa5-04-0a12c6071b3af4e73278513f251ddb5961e6203c",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]/section[3]/div[1]"
     },
     {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-11-8e3430bcf54a9acaf3a64de98530b50936863cbf",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[7]/div[1]/div[1]/div[1]",
-      "section": "section-4"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-12-0b4d457c5f1f2a776b61973d175e66ae4ae0c781",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]",
-      "section": "section-4"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-13-7fcc4685dd1ec501be81131b1f70e8b60271f53f",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]",
-      "section": "section-4"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-14-e348599c070d9f00d68312f1651b9c7e6fcf2fe9",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]",
-      "section": "section-4"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-15-1ccbf3a07306ec7f3ebac38bcd4a521ddc05ac85",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[8]/div[1]/div[1]",
-      "section": "section-5"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-16-ca447ffd3ab6c11e1941e46c16668ba4754dde66",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[8]/div[1]/div[2]/div[1]/a[4]",
-      "section": "section-5"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-17-1319e994cee065731824fa9a11127faba6e61f61",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[9]/div[1]"
-    },
-    {
-      "url": "https://www.nparks.gov.sg",
-      "urlHash": "95372ee507b3b0e25a83e89dc36694bc01c61d6c",
-      "uuid": "95372ee5-20-3dd38cf1352119a5de630734a1d4e48f7ce4e230",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]/div[3]/div[2]",
-      "section": "section-6"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-03-10ff6870fe0e1e8555c1dab4170caa3e62155dbd",
-      "xpath": "/html[1]/body[1]/div[1]/div[2]",
-      "section": "section-2"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-05-52e6b905466250bb5884dcbfb7abbc9a31e6f4ef",
-      "xpath": "/html[1]/body[1]/div[1]/div[4]"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-06-0b70b898685780682b796993f1c10c54af37bf35",
-      "xpath": "/html[1]/body[1]/div[1]/div[5]/div[1]/div[1]"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-07-8cf39b50834dc16ddabb5de8596ed93388a6ab97",
-      "xpath": "/html[1]/body[1]/div[1]/div[5]/div[1]/div[2]"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-09-740b5c7e98bc9de96253fde8acb2f1345a50652b",
-      "xpath": "/html[1]/body[1]/div[1]/div[5]/div[1]/div[4]/div[2]"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-10-4eabbda5311e71fa12ce80cd0e2687c8b4743c67",
-      "xpath": "/html[1]/body[1]/div[1]/div[6]"
-    },
-    {
-      "url": "https://www.nparks.gov.sg/visit/activities/arts-or-heritage-appreciation",
-      "urlHash": "be20508fee377e929d1b86cdd36df241d7fd296f",
-      "uuid": "be20508f-12-474dc0edbe7e0f6318d1b78a925844199876984d",
-      "xpath": "/html[1]/body[1]/div[1]/div[7]/div[2]",
-      "section": "section-6"
+      "url": "https://www.mccy.gov.sg",
+      "urlHash": "c5a81fa5c3c3e6c781655c1ee67b9e4fad0e0eb6",
+      "uuid": "c5a81fa5-06-68c90a2c4b031be93223f401fa6aa5155df61940",
+      "xpath": "/html[1]/body[1]/main[1]/div[1]/section[3]/div[3]"
     }
   ],
   "sections": [
     {
       "name": "section-1",
-      "background": "rgb(240, 240, 240) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 2
+      "background": "rgb(216, 5, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 1
     },
     {
       "name": "section-2",
-      "background": "rgb(33, 87, 50) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 6
+      "background": "rgb(24, 24, 27) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 2
     },
     {
       "name": "section-3",
-      "background": "rgb(246, 246, 246) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 3
-    },
-    {
-      "name": "section-4",
-      "background": "rgba(0, 0, 0, 0) url(\"https://www.nparks.gov.sg/images/default-source/default-album/Home/background-forest.jpg\") repeat-x scroll 100% 100% / min(1500px, 70%) padding-box border-box",
-      "count": 4
-    },
-    {
-      "name": "section-5",
-      "background": "rgb(220, 232, 215) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 2
-    },
-    {
-      "name": "section-6",
-      "background": "rgb(19, 55, 21) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 2
-    },
-    {
-      "name": "section-7",
-      "background": "rgb(39, 39, 39) none repeat scroll 0% 0% / auto padding-box border-box",
-      "count": 2
+      "background": "rgba(0, 0, 0, 0) linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 1
     }
   ]
 }
