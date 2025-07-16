@@ -1,3 +1,5 @@
+/* Remove duplicate selectors and merge all rules for each duplicate selector group */
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -48,12 +50,13 @@
 
 /* --- START: merged .hero.hero1 selector --- */
 .hero.hero1 {
-  position: relative;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   width: 100vw;
-  min-height: 520px;
+  min-height: 350px;
+  position: relative;
   padding: 0;
   overflow: hidden;
   box-sizing: border-box;
@@ -86,10 +89,10 @@
   display: block;
   background: linear-gradient(
     90deg,
-    rgb(0 0 0 / 88%) 0%,
-    rgb(0 0 0 / 54%) 52%,
-    rgb(0 0 0 / 13%) 88%,
-    rgb(0 0 0 / 0%) 100%
+    rgb(0 0 0 / 85%) 0%,
+    rgb(0 0 0 / 55%) 32%,
+    rgb(0 0 0 / 10%) 56%,
+    rgb(0 0 0 / 0%) 70%
   );
   pointer-events: none;
   content: "";
@@ -104,51 +107,59 @@
   align-items: flex-start;
   height: auto;
   min-height: 0;
-  padding-left: 72px;
-  padding-right: 16px;
-  max-width: 580px;
+  padding-left: 24px;
+  padding-right: 8px;
+  max-width: 410px;
   width: 100%;
+  margin: 0;
   box-sizing: border-box;
-  margin-top: -32px;
 }
 
 .hero.hero1 h1 {
   color: #fff;
-  font-size: 3.3rem;
+  font-size: 2.55rem;
   font-weight: 700;
-  margin: 0 0 18px;
-  line-height: 1.06;
+  margin: 0 0 12px;
+  line-height: 1.08;
   text-align: left;
   max-width: 100%;
   overflow-wrap: break-word;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.013em;
 }
 
 .hero.hero1 p {
   color: #e0e0e0;
-  font-size: 1.16rem;
+  font-size: 1.05rem;
   font-weight: 400;
   margin: 0;
   text-align: left;
-  max-width: 99%;
+  max-width: 97%;
   overflow-wrap: break-word;
-  line-height: 1.4;
+  line-height: 1.26;
   opacity: 1;
 }
 
 @media (width <= 900px) {
   .hero.hero1 {
-    min-height: 260px;
+    min-height: 180px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
   }
 
   .hero.hero1 > div:last-child {
-    padding-left: 16px;
+    max-width: 98vw;
+    padding-left: 12px;
     padding-right: 6px;
-    max-width: 97vw;
-    margin-top: -12px;
+    padding-top: 22vw;
   }
 
   .hero.hero1 h1 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+  }
+
+  .hero.hero1 p {
+    font-size: 0.92rem;
   }
 }
