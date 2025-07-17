@@ -268,3 +268,69 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* Make header nav links horizontal and remove bullets */
+header nav ul {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 2.5rem !important; /* Adjust spacing as needed */
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  align-items: center;
+}
+
+header nav ul li {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Style the links for better appearance */
+header nav ul li a {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 0.25em 0.5em;
+  transition: color 0.2s;
+}
+
+header nav ul li a:hover {
+  color: #ef3320;
+}
+
+/* Style the icons inside nav */
+header nav ul li picture,
+header nav ul li img {
+  margin-left: 0.5em;
+  height: 1em;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header,
+.header-wrapper,
+.header,
+header > *,
+.header-wrapper > *,
+.header.block,
+header .nav-wrapper,
+header .section,
+header .default-content-wrapper {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+/* Reduce space between logo and navigation */
+header .nav-brand {
+  margin-right: 1.5rem !important;
+}
+
+header .nav-sections {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
