@@ -112,3 +112,66 @@
     order: unset;
   }
 }
+
+/* Make the inner div a grid for 3 columns */
+.columns.columns3.block.columns-3-cols > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Style each news card */
+.columns.columns3.block.columns-3-cols > div > div {
+  background: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Style the button to look like a card link */
+.columns.columns3.block.columns-3-cols .button-container {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 1rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin: 0;
+}
+
+.columns.columns3.block.columns-3-cols .button-container .button {
+  font-size: 1.1em;
+  color: #111;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  display: block;
+}
+
+/* Center the 'Read all news and announcements' button */
+.columns.columns3.block.columns-3-cols .button-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+}
+
+/* Center the button-container inside .default-content-wrapper */
+.default-content-wrapper > .button-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100%;
+  margin: 2rem 0 0 0;
+}
