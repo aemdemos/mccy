@@ -163,3 +163,43 @@
     font-size: 0.92rem;
   }
 }
+
+/* Make the hero image taller */
+.hero-wrapper {
+  min-height: 500px !important;
+  height: 500px !important;
+  max-height: none !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Make the hero section taller */
+.hero-wrapper {
+  min-height: 500px !important;
+  height: 500px !important;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Make the inner .hero block fill the height */
+.hero-wrapper > .hero {
+  height: 100% !important;
+  min-height: 100% !important;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Make the image fill the hero area */
+.hero-wrapper picture,
+.hero-wrapper img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* Make sure text is vertically centered if needed */
+.hero-wrapper h1,
+.hero-wrapper p {
+  margin: 0 0 1rem 0;
+}
