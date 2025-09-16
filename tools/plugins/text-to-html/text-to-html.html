@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text to HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="data:,">
+    <script src="https://da.live/nx/utils/sdk.js" type="module"></script>
+    <script src="/tools/plugins/text-to-html/text-to-html.js" type="module"></script>
+    <link rel="stylesheet" href="/tools/plugins/text-to-html/text-to-html.css">
+  </head>
+  <body>
+    <div id="text-to-html-container">
+      <div class="input-section">
+        <div class="info-note">
+          <strong>Note:</strong> Enter your text content and see the HTML output in real-time.
+        </div>
+        
+        <div class="input-group">
+          <label for="text-input">Text Input:</label>
+          <textarea id="text-input" placeholder="Enter your text here..." rows="8"></textarea>
+          <small>Type or paste your content above to generate HTML</small>
+        </div>
+      </div>
+      
+      <div class="main-content">
+        <div class="two-column-layout">
+          <div class="options-column" role="region" aria-labelledby="options-heading">
+            <h3 id="options-heading">HTML Options:</h3>
+            <div class="options-list">
+              <div class="option-group">
+                <label>
+                  <input type="checkbox" id="auto-paragraphs" checked>
+                  Auto-wrap paragraphs
+                </label>
+                <small>Automatically wrap line breaks in &lt;p&gt; tags</small>
+              </div>
+              
+              <div class="option-group">
+                <label>
+                  <input type="checkbox" id="preserve-breaks">
+                  Preserve line breaks
+                </label>
+                <small>Convert line breaks to &lt;br&gt; tags</small>
+              </div>
+              
+              <div class="option-group">
+                <label>
+                  <input type="checkbox" id="escape-html">
+                  Escape HTML entities
+                </label>
+                <small>Convert special characters (&lt;, &gt;, &amp;)</small>
+              </div>
+              
+              <div class="option-group">
+                <label>
+                  <input type="checkbox" id="detect-links">
+                  Auto-detect links
+                </label>
+                <small>Convert URLs to clickable links</small>
+              </div>
+            </div>
+          </div>
+          
+          <div class="output-column" role="region" aria-labelledby="output-heading">
+            <h3 id="output-heading">HTML Output:</h3>
+            <div id="html-preview" class="html-preview" role="region" aria-live="polite" aria-label="HTML output">
+              <div class="empty-state">
+                <p>Enter text to see HTML output</p>
+              </div>
+            </div>
+            <div class="output-actions">
+              <button id="copy-html" type="button" class="button secondary" disabled>Copy HTML</button>
+              <button id="insert-html" type="button" class="button secondary" disabled>Insert into Document</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
